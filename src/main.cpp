@@ -1,7 +1,12 @@
+/**
+ * Salut Rolf !
+ *
+ * Copyright (C) 2025, GPL-3.0-or-later, Nicolas Jeanmonod, ouilogique.com
+ */
+
 #include <Arduino.h>
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include "../fonts/Comic_Sans_MS_Bold13pt7b.h"
 
@@ -20,7 +25,6 @@ void setupSSD1306()
             yield();
     }
     display.clearDisplay();
-    display.display();
     display.setRotation(0);
     display.setTextSize(1);
     display.setTextColor(SSD1306_WHITE);
@@ -31,15 +35,8 @@ void setupSSD1306()
     display.display();
 }
 
-void setupSerial()
-{
-    Serial.begin(BAUD_RATE);
-    Serial.print("\n\n\n\n");
-}
-
 void setup()
 {
-    setupSerial();
     setupSSD1306();
 }
 

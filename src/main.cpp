@@ -31,16 +31,23 @@ void setupSSD1306()
     display.setFont(&Comic_Sans_MS_Bold13pt7b);
     display.setCursor(10, 22);
     display.println(F("Salut"));
-    display.println(F("     Rolf !"));
+    display.println(F("    Rolf !"));
     display.display();
+}
+
+void setupSerial()
+{
+    Serial.begin(BAUD_RATE);
 }
 
 void setup()
 {
+    setupSerial();
     setupSSD1306();
 }
 
 void loop()
 {
-    yield();
+    Serial.println(millis());
+    delay(1000);
 }

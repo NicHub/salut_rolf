@@ -18,12 +18,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 void setupSSD1306()
 {
-    if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS))
-    {
-        Serial.println(F("SSD1306 allocation failed"));
-        while (true)
-            yield();
-    }
+    display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);
     display.clearDisplay();
     display.setRotation(0);
     display.setTextSize(1);
@@ -48,6 +43,8 @@ void setup()
 
 void loop()
 {
-    Serial.println(millis());
-    delay(1000);
+    delay(1000 - millis() % 1000);
+    Serial.printf("%12lu ms\n", millis());
+    display.drawPixel(SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, SSD1306_INVERSE);
+    display.display();
 }
